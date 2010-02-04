@@ -8,20 +8,23 @@ integrate_views
 	end
 
   describe "GET 'home'" do
+  	before(:each) { get 'home' }
+  		
     it "should be successful" do
-      get 'home'
       response.should be_success
     end
     
     it "should have the right title" do
-    	get 'home'
     	response.should have_tag("title", @base_title + "Home")
     end
     
     it "should have screen stylesheet" do
-    	get 'home'
     	response.should have_tag("link[media='screen']")
     	response.should have_tag("link[media='print']")
+	end
+	
+	it "should have a logo" do
+		response.should have_tag("img", :alt => "Sample App Logo")
 	end
   end
 
