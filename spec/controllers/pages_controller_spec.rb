@@ -17,6 +17,12 @@ integrate_views
     	get 'home'
     	response.should have_tag("title", @base_title + "Home")
     end
+    
+    it "should have screen stylesheet" do
+    	get 'home'
+    	response.should have_tag("link[media='screen']")
+    	response.should have_tag("link[media='print']")
+	end
   end
 
   describe "GET 'contact'" do
